@@ -1,11 +1,11 @@
-// Create a Ninja class with speed, strength attributes, health attribute, and sayName, showStats, drinkSake methods
+
 
 class Ninja {
-    constructor(name) {
+    constructor(name, health = 100, speed = 3, strength = 3) {
         this.name = name;
-        this.health = 100;
-        this.speed = 3;
-        this.strength = 3;
+        this.health = health;
+        this.speed = speed;
+        this.strength = strength;
     }
     sayName() {
         console.log(`My ninja name is ${this.name}`);
@@ -20,9 +20,18 @@ class Ninja {
         return this;
     }
 }
+    class Sensei extends Ninja {
+        constructor(name) {
+            super(name, 200, 10, 10);
+            this.wisdom = 10;
+        }
+        speakWisdom() {
+            super.drinkSake();
+            console.log(`What one programmer can do in one month, you can do in two months.`);
+            super.showStats();
+            return this;
+        }
+}
 
-const ninja1 = new Ninja("Hyabusa");
-
-ninja1.sayName();
-ninja1.showStats();
-ninja1.drinkSake().showStats();
+const superSensei = new Sensei("Master Sensei");
+superSensei.speakWisdom();
